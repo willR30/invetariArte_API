@@ -1,6 +1,6 @@
 from rest_framework import viewsets, permissions
-from .models import Products, Equipment, Equipment_Category, Category, Bill, Bill_state, Sale, Month, Year
-from .serializers import ProductSerializer, EquipmentSerializer,EquipmentCategorySerializer, CategorySerializer, BillSerializer,BillStateSerializer,YearSerializer, MonthSerializer, SaleSerializer
+from .models import Products, Equipment, Equipment_Category, Category, Bill, Bill_state, Sale, Month, Year, TypeCustomer, Customer
+from .serializers import ProductSerializer, EquipmentSerializer,EquipmentCategorySerializer, CategorySerializer, BillSerializer,BillStateSerializer,YearSerializer, MonthSerializer, SaleSerializer, TypeCustomerSerializer, CustomerSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -24,6 +24,16 @@ class CategoryViewSet(viewsets.ModelViewSet):
     # Indicamos los permisos, cualquier app cliente puede consultar datos pero luego se puede cambiar
     permission_classes = [permissions.AllowAny]
     serializer_class = CategorySerializer
+
+class TypeCustomerViewSet(viewsets.ModelViewSet):
+    queryset = TypeCustomer.objects.all()
+    permission_classes=[permissions.AllowAny]
+    serializer_class=TypeCustomerSerializer
+
+class CustomerViewSet(viewsets.ModelViewSet):
+    queryset = Customer.objects.all()
+    permission_classes=[permissions.AllowAny]
+    serializer_class=CustomerSerializer
 
 class ProductsViewSet(viewsets.ModelViewSet):
     # Consultamos todos los productos
