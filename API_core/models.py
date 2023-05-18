@@ -32,6 +32,18 @@ class Month(models.Model):
 class Year(models.Model):
     name=models.CharField(max_length=30)
 
+
+class TypeCustomer(models.Model):
+    """
+        we can have many customer types: Particular Customer, busisnes
+    """
+    customerType=models.CharField(max_length=50)
+
+class Customer(models.Model):
+    full_name=models.CharField(max_length=10)
+    type=models.ForeignKey(TypeCustomer, on_delete=models.CASCADE)
+
+
 class Bill(models.Model):
     date=models.DateField()
     customer_name=models.CharField(max_length=50)

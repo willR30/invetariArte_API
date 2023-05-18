@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Products, Equipment, Equipment_Category, Category, Bill, Bill_state, Sale, Month, Year
+from .models import Products, Equipment, Equipment_Category, Category, Bill, Bill_state, Sale, Month, Year, TypeCustomer, Customer
 
 class EquipmentCategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -49,6 +49,18 @@ class YearSerializer(serializers.ModelSerializer):
         model=Year
         #campos que van a ser consultados que ya tiene las tablas
         fields=('id','name')
+        read_only_fields=('id',)
+
+class TypeCustomerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=TypeCustomer
+        fields=('id','customerType')
+        read_only_fields=('id',)
+
+class CustomerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Customer
+        fields=('id','full_name','type')
         read_only_fields=('id',)
 
 class BillSerializer(serializers.ModelSerializer):
