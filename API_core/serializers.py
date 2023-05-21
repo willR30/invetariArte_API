@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Products, Equipment, Equipment_Category, Category, Bill, Bill_state, Sale, Month, Year, TypeCustomer, Customer
+from .models import Products, Equipment, Equipment_Category, Category, Bill, Bill_state, Sale, Month, Year, TypeCustomer, Customer, PaymentType, CurrencyType
 
 class EquipmentCategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -63,11 +63,23 @@ class CustomerSerializer(serializers.ModelSerializer):
         fields=('id','full_name','type')
         read_only_fields=('id',)
 
+class CurrencyTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=CurrencyType
+        fields=('id','currency','symbol')
+        read_only_fields=('id',)
+
+class PaymentTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=PaymentType
+        fields=('id','payment_type')
+        read_only_fields=('id',)
+
 class BillSerializer(serializers.ModelSerializer):
     class Meta:
         model=Bill
         #campos que van a ser consultados que ya tiene las tablas
-        fields=('id','date','customer_name','sub_total','iva','total', 'id_month', 'id_year', 'id_bill_state')
+        fields=('id','date','customer_name','sub_total','iva','total', 'id_month', 'id_year', 'id_bill_state','id_currency_type','id_payment_type')
         read_only_fields=('id',)
 
 class SaleSerializer(serializers.ModelSerializer):
