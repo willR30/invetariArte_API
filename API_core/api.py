@@ -1,6 +1,6 @@
 from rest_framework import viewsets, permissions
-from .models import Products, Equipment, Equipment_Category, Category, Bill, Bill_state, Sale, Month, Year, TypeCustomer, Customer
-from .serializers import ProductSerializer, EquipmentSerializer,EquipmentCategorySerializer, CategorySerializer, BillSerializer,BillStateSerializer,YearSerializer, MonthSerializer, SaleSerializer, TypeCustomerSerializer, CustomerSerializer
+from .models import Products, Equipment, Equipment_Category, Category, Bill, Bill_state, Sale, Month, Year, TypeCustomer, Customer, PaymentType, CurrencyType
+from .serializers import ProductSerializer, EquipmentSerializer,EquipmentCategorySerializer, CategorySerializer, BillSerializer,BillStateSerializer,YearSerializer, MonthSerializer, SaleSerializer, TypeCustomerSerializer, CustomerSerializer, PaymentTypeSerializer, CurrencyTypeSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -59,6 +59,16 @@ class YearViewSet(viewsets.ModelViewSet):
     # Indicamos los permisos, cualquier app cliente puede consultar datos pero luego se puede cambiar
     permission_classes = [permissions.AllowAny]
     serializer_class = YearSerializer
+
+class CurrencyTypeViewSet(viewsets.ModelViewSet):
+    queryset=CurrencyType.objects.all()
+    permission_classes = [permissions.AllowAny]
+    serializer_class = CurrencyTypeSerializer
+
+class PaymentTypeViewSet(viewsets.ModelViewSet):
+    queryset=PaymentType.objects.all()
+    permission_classes = [permissions.AllowAny]
+    serializer_class = PaymentTypeSerializer
 
 class BillViewSet(viewsets.ModelViewSet):
     queryset = Bill.objects.all()

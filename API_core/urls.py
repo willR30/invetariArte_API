@@ -14,6 +14,8 @@ router.register('products',ProductsViewSet, 'Products')
 router.register('billState', BillStateViewSet,'BillState')
 router.register('month', MonthViewSet,'Month')
 router.register('year', YearViewSet,'Year')
+router.register('currencyType', CurrencyTypeViewSet, 'CurrencyType')
+router.register('paymentType', PaymentTypeViewSet, 'PaymentType')
 router.register('bill', BillViewSet,'Bill')
 router.register('sale',SaleViewSet,'Sale')
 
