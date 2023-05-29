@@ -11,8 +11,8 @@ class Equipment_Category(models.Model):
             -Productos quimicos 
             -etc ...
     """
-    name=models.CharField(max_length=30)
-    description=models.CharField(max_length=200)
+    name=models.CharField(max_length=50)
+    description=models.CharField(max_length=500)
 
     def __str__(self):
         return  self.name
@@ -27,6 +27,8 @@ class Equipment(models.Model):
     name=models.CharField(max_length=30)
     id_equipment_category=models.ForeignKey(Equipment_Category,on_delete=models.CASCADE)#establecemos la relacion
 
+    
+
 class Category(models.Model):
     """
         Categoria de los productos a vender al publico
@@ -36,7 +38,7 @@ class Category(models.Model):
     description=models.CharField(max_length=200)
 
     def __str__(self) :
-        return self.name
+        return f'{self.name} - {self.description}'
 
 class Products(models.Model):
     """
@@ -96,7 +98,7 @@ class Customer(models.Model):
     """
         El cliente como tal que previamente fue registrado
     """
-    full_name=models.CharField(max_length=10)
+    full_name=models.CharField(max_length=100)
     type=models.ForeignKey(TypeCustomer, on_delete=models.CASCADE)
 
     def __str__(self) :
@@ -137,6 +139,9 @@ class Bill(models.Model):
     id_bill_state=models.ForeignKey(Bill_state,on_delete=models.CASCADE)
     id_currency_type=models.ForeignKey(CurrencyType, on_delete=models.CASCADE, null=True)
     id_payment_type=models.ForeignKey(PaymentType, on_delete=models.CASCADE,null=True)
+
+    def __str__(self) -> str:
+        return f'{self.date}-{self.customer_name}'
 
 class Sale(models.Model):
     """
