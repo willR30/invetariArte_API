@@ -12,7 +12,7 @@ class Equipment_Category(models.Model):
             -etc ...
     """
     name=models.CharField(max_length=50)
-    description=models.CharField(max_length=500)
+    description=models.CharField(max_length=100)
 
     def __str__(self):
         return  self.name
@@ -24,7 +24,7 @@ class Equipment(models.Model):
             Categoria: Soldadores
             producto : Cautin Industrial
     """
-    name=models.CharField(max_length=30)
+    name=models.CharField(max_length=100)
     id_equipment_category=models.ForeignKey(Equipment_Category,on_delete=models.CASCADE)#establecemos la relacion
 
     
@@ -48,8 +48,8 @@ class Products(models.Model):
             Producto: Impresora industrial xl123
     """
     #the Id is for default
-    name=models.CharField(max_length=30)
-    description=models.CharField(max_length=200)
+    name=models.CharField(max_length=200)
+    description=models.CharField(max_length=500)
     stock=models.IntegerField()
     cost=models.FloatField()
     price=models.FloatField()
@@ -98,7 +98,7 @@ class Customer(models.Model):
     """
         El cliente como tal que previamente fue registrado
     """
-    full_name=models.CharField(max_length=100)
+    full_name=models.CharField(max_length=200)
     type=models.ForeignKey(TypeCustomer, on_delete=models.CASCADE)
 
     def __str__(self) :
