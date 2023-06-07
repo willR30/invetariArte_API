@@ -51,7 +51,8 @@ class Products(models.Model):
     stock=models.IntegerField()
     cost=models.FloatField()
     price=models.FloatField()
-    id_category=models.ForeignKey(Category,on_delete=models.CASCADE)#Cada producto pertence a una categoria
+    #category=models.ForeignKey(Category).name
+    category=models.ForeignKey(Category,on_delete=models.CASCADE)#Cada producto pertence a una categoria
 
     def __str__(self) :
         return self.name

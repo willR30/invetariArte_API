@@ -24,10 +24,14 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    #category =serializers.CharField(source="category.name", read_only=True)
+    category = serializers.SlugRelatedField(
+        queryset = Category.objects.all(), slug_field="name"
+    )
     class Meta:
         model=Products
         #campos que van a ser consultados que ya tiene las tablas
-        fields=('id','name','description','stock','cost','price','id_category')
+        fields=('id','name','description','stock','cost','price','category')
         read_only_fields=('id',)
 
 class BillStateSerializer(serializers.ModelSerializer):
