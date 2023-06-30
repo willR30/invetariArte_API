@@ -148,9 +148,9 @@ class Sale(models.Model):
     #billNumber=models.CharField(max_length=20, null=False, unique=True)
     productName=models.ForeignKey(Products, on_delete=models.CASCADE)
     category=models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
-    price=models.CharField(max_length=10, null=False, blank=True)
+    price=models.DecimalField(default=0, max_digits=20, decimal_places=2)
     amount_products=models.CharField(max_length=10, null=False, blank=True)
-    total_sale=models.CharField(max_length=10, null=False, blank=True)
+    total_sale=models.DecimalField(default=0, max_digits=20, decimal_places=2)
     """ price_at_moment=models.DecimalField(default=0, max_digits=20, decimal_places=2)
     amount_products=models.PositiveBigIntegerField()
     total_sale=models.DecimalField(default=0, max_digits=20, decimal_places=2) """
