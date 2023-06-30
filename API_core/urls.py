@@ -18,6 +18,8 @@ router.register('currencyType', CurrencyTypeViewSet, 'CurrencyType')
 router.register('paymentType', PaymentTypeViewSet, 'PaymentType')
 router.register('bill', BillViewSet,'Bill')
 router.register('sale',SaleViewSet,'Sale')
+router.register('billItems',BillItemsViewSet,'BillItems')
+router.register('productStock',productStockViewSet,'productStock')
 
 #Registrar demas urls
 
