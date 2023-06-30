@@ -112,10 +112,7 @@ class SaleSerializer(serializers.ModelSerializer):
     productName = serializers.SlugRelatedField(
          queryset = Products.objects.all(), slug_field="name"
     )
-
-    """  billNumber = serializers.SlugRelatedField(
-        queryset = Bill.objects.all(), slug_field="billNumber"
-    )  """
+    
     class Meta:
         model=Sale
         #campos que van a ser consultados que ya tiene las tablas
@@ -160,10 +157,6 @@ class BillSerializer(WritableNestedModelSerializer):
 class BillItemsSerializer(WritableNestedModelSerializer):
 
     billItems= SaleSerializer(many=True)
-
-    """ billNumber = serializers.SlugRelatedField(
-        queryset = Bill.objects.all(), slug_field="billNumber"
-    ) """
 
     class Meta:
         model= BillItems
